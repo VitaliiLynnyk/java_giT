@@ -7,7 +7,7 @@ class Main {
 
     public static void main(String[] args) {
         JFrame window = new JFrame("first laba");
-		 window.setSize(400,400);
+		 window.setSize(300,125);
         window.setDefaultCloseOperation(window.EXIT_ON_CLOSE);
         window.setVisible(true);
         JButton btn = new JButton("start");
@@ -30,7 +30,7 @@ class Main {
                 {
                     k++;
                 }
-                //System.out.println("large number of letters:"+ku+" number of small letters:"+kl);
+               
                 res.setText(" number :"+k);
 
 
