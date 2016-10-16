@@ -8,9 +8,10 @@ class Pens
     String color ;
     int Pasta ;
     boolean  broke ;
-    float write ;
-    float create ;
     int minuts;
+    float write;
+    float create;
+    String ChColor;
 
     public String toString()
     {
@@ -53,7 +54,7 @@ class Pens
         }
     }
 
-    void color()
+    void ChColor()
     {
         if(color =="black")
         {
@@ -113,7 +114,7 @@ public class Main {
         btColor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Pen.color();
+                Pen.ChColor();
                 System.out.println(Pen);
             }
         });
