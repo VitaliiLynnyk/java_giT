@@ -11,20 +11,23 @@ class Pens
     int minuts;
     float write;
     float create;
-    String ChColor;
-
+    String ChangeCol;
+    String Brend;
+    String ChangeBre;
+    int kkd = 2;
     public String toString()
     {
         return " Pen : " +
-                "percPasta = " + Pasta +","+ " Color = " +color + ","  + "broke = " + broke;
+                "percPasta = " + Pasta +","+ " Color = " +color + ","  + "Brend = "+ Brend +","+" broke = "+ broke;
 
     }
 
-    void create( int per , String col, boolean b)
+    void create( int per , String col,String br ,boolean b)
     {
         Pasta = per ;
         color = col ;
         broke = b ;
+        Brend = br;
     }
 
 
@@ -40,7 +43,7 @@ class Pens
                     k++;
                     break;
                 } else {
-                    Pasta = Pasta - 2;
+                    Pasta = Pasta - kkd;
                 }
 
             }
@@ -54,7 +57,7 @@ class Pens
         }
     }
 
-    void ChColor()
+    void ChangeCol()
     {
         if(color =="black")
         {
@@ -67,13 +70,26 @@ class Pens
         }
     }
 
-
+     void ChangeBre()
+     {
+         if(Brend == "Lecce_Pen")
+         {
+             Brend = "Parker_Pen";
+             kkd = 1;
+         }
+         else if(Brend =="Parker_Pen")
+         {
+             Brend = "Lecce_Pen";
+             kkd = 2;
+         }
+     }
 }
 public class Main {
 
     public static void main(String[] args) {
         JFrame window = new JFrame("laba 2 ") ;
-        window.setSize(100,250);
+        window.setSize(100,300);
+        window.setLocationRelativeTo(null);
         window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel panel = new JPanel();
@@ -81,13 +97,16 @@ public class Main {
         JButton btCreate = new JButton("create");
         JButton btWrite = new JButton("write");
         JButton btColor = new JButton("color");
+        JButton btBrend = new JButton("Brend");
 
         btCreate.setPreferredSize(new Dimension(100,50));
         btWrite.setPreferredSize(new Dimension(100,50));
         btColor.setPreferredSize(new Dimension(100,50));
+        btBrend.setPreferredSize(new Dimension(100,50));
         panel.add(btCreate);
         panel.add(btWrite);
         panel.add(btColor);
+        panel.add(btBrend);
         window.add(panel);
 
         Pens Pen = new Pens();
@@ -95,7 +114,7 @@ public class Main {
         btCreate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Pen.create(100,"black",false);
+                Pen.create(100,"black","Lecce_Pen",false);
                 System.out.println(Pen);
 
 
@@ -114,12 +133,18 @@ public class Main {
         btColor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Pen.ChColor();
+                Pen.ChangeCol();
                 System.out.println(Pen);
             }
         });
 
-
+        btBrend.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Pen.ChangeBre();
+                System.out.println(Pen);
+            }
+        });
 
 
 
