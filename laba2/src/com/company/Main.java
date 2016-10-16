@@ -6,9 +6,7 @@ import java.awt.event.*;
 class Pens
 {
     String color ;
-    float changeColor;
     int Pasta ;
-    float changePasta ;
     boolean  broke ;
     float write ;
     float create ;
@@ -55,21 +53,18 @@ class Pens
         }
     }
 
-  void ChangeColor()
-  {
-          if(color == "black")
-          {
-              color = "green";
-              Pasta = 100;
-          }
-          else if(color == "green")
-          {
-              color = "black";
-              Pasta = 100;
-          }
-
-
-  }
+    void color()
+    {
+        if(color =="black")
+        {
+            color ="green";
+            Pasta = 100;
+        }else if(color =="green")
+        {
+           color = "black";
+            Pasta = 100;
+        }
+    }
 
 
 }
@@ -77,14 +72,14 @@ public class Main {
 
     public static void main(String[] args) {
         JFrame window = new JFrame("laba 2 ") ;
-        window.setSize(350,100);
+        window.setSize(100,250);
         window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel panel = new JPanel();
+
         JButton btCreate = new JButton("create");
         JButton btWrite = new JButton("write");
-        JButton btColor = new JButton("Color");
-
+        JButton btColor = new JButton("color");
 
         btCreate.setPreferredSize(new Dimension(100,50));
         btWrite.setPreferredSize(new Dimension(100,50));
@@ -93,7 +88,6 @@ public class Main {
         panel.add(btWrite);
         panel.add(btColor);
         window.add(panel);
-
 
         Pens Pen = new Pens();
 
@@ -119,7 +113,7 @@ public class Main {
         btColor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Pen.ChangeColor();
+                Pen.color();
                 System.out.println(Pen);
             }
         });
