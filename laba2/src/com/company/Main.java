@@ -41,7 +41,7 @@ class Pens
                     k++;
                     break;
                 } else {
-                    Pasta = Pasta - 1;
+                    Pasta = Pasta - 2;
                 }
 
             }
@@ -55,7 +55,21 @@ class Pens
         }
     }
 
+  void ChangeColor()
+  {
+          if(color == "black")
+          {
+              color = "green";
+              Pasta = 100;
+          }
+          else if(color == "green")
+          {
+              color = "black";
+              Pasta = 100;
+          }
 
+
+  }
 
 
 }
@@ -63,18 +77,24 @@ public class Main {
 
     public static void main(String[] args) {
         JFrame window = new JFrame("laba 2 ") ;
-        window.setSize(100,100);
+        window.setSize(350,100);
         window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       // JPanel panel = new JPanel();
+        JPanel panel = new JPanel();
         JButton btCreate = new JButton("create");
         JButton btWrite = new JButton("write");
-        window.getContentPane().add(btCreate,BorderLayout.WEST);
-        window.getContentPane().add(btWrite,BorderLayout.EAST);
-        //bt1.setPreferredSize(new Dimension(100,100));
-      //  bt2.setPreferredSize(new Dimension(100,100));
-//        panel.add(bt2);
-      //  window.add(panel);
+        JButton btColor = new JButton("Color");
+
+
+        btCreate.setPreferredSize(new Dimension(100,50));
+        btWrite.setPreferredSize(new Dimension(100,50));
+        btColor.setPreferredSize(new Dimension(100,50));
+        panel.add(btCreate);
+        panel.add(btWrite);
+        panel.add(btColor);
+        window.add(panel);
+
+
         Pens Pen = new Pens();
 
         btCreate.addActionListener(new ActionListener() {
@@ -91,12 +111,18 @@ public class Main {
         btWrite.addActionListener((new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Pen.write(50);
+                Pen.write(5);
                 System.out.println(Pen);
             }
         }));
 
-
+        btColor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Pen.ChangeColor();
+                System.out.println(Pen);
+            }
+        });
 
 
 
