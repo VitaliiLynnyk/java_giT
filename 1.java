@@ -1,13 +1,12 @@
-package com.company;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
+import java.util.Arrays;
 class Main {
 
     public static void main(String[] args) {
         JFrame window = new JFrame("first laba");
-		 window.setSize(300,125);
+        window.setSize(350,120);
         window.setDefaultCloseOperation(window.EXIT_ON_CLOSE);
         window.setVisible(true);
         JButton btn = new JButton("start");
@@ -20,23 +19,41 @@ class Main {
 
         btn.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                String a;
-                int k,i;
+            public void actionPerformed(ActionEvent e)  {
+                String str;
+                str = str1.getText();
 
-                k = 0;
-                a = str1.getText();
-                for (i = 0; i<a.length();i++)
+                int i ;
+                int  k = 0 ;
+                char[] chArray = str.toCharArray();
+                System.out.println("char = " + Arrays.toString(chArray));
+
+                for( i = 0; i < chArray.length; i++)
                 {
-                    k++;
+                    k=0;
+
+                    for (int j=0; j<chArray.length;j++)
+
+
+                        if ( chArray[i]  == chArray[j]  )
+                        {
+                            k++;
+                        }
+
+                    System.out.println(chArray[i] + " " + k);
+
+                  //  break;
                 }
-               
-                res.setText(" number :"+k);
-
-
-
-
             }
+
+
+
+
+
+
+
+
+
         });
     }
 }

@@ -7,65 +7,92 @@ class Pens
 {
     String color ;
     float changeColor;
-    float percPasta ;
+    int Pasta ;
     float changePasta ;
     boolean  broke ;
     float write ;
     float create ;
+    int minuts;
 
     public String toString()
     {
-        return " Pen" +
-        "Color" +color + "percPasta" + percPasta + " broke" + broke;
+        return " Pen : " +
+                "percPasta = " + Pasta +","+ " Color = " +color + ","  + "broke = " + broke;
 
     }
 
-    void create( float per , String col, boolean b)
+    void create( int per , String col, boolean b)
     {
-        percPasta = per ;
+        Pasta = per ;
         color = col ;
         broke = b ;
     }
 
 
-    void write( float pp)
+    void write( int p)
     {
-      percPasta = pp ;
+      minuts = p ;
+        int k=0 ;
+        if( broke == false)
+        {
+            for (int i = 1; i <= minuts; i++) {
+                if (Pasta <= 0) {
+                    System.out.println("NOPasta");
+                    k++;
+                    break;
+                } else {
+                    Pasta = Pasta - 1;
+                }
+
+            }
+            if( k == 1)
+            {
+                broke = true;
+            }
+        } else
+        {
+            System.out.println("PEN BROKEN");
+        }
     }
+
+
+
 
 }
 public class Main {
 
     public static void main(String[] args) {
         JFrame window = new JFrame("laba 2 ") ;
-        window.setSize(600,600);
+        window.setSize(100,100);
         window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        // JPanel panel = new JPanel();
-        JButton bt1 = new JButton("create");
-        JButton bt2 = new JButton("write");
-        window.getContentPane().add(bt1,BorderLayout.EAST);
+        JButton btCreate = new JButton("create");
+        JButton btWrite = new JButton("write");
+        window.getContentPane().add(btCreate,BorderLayout.WEST);
+        window.getContentPane().add(btWrite,BorderLayout.EAST);
         //bt1.setPreferredSize(new Dimension(100,100));
       //  bt2.setPreferredSize(new Dimension(100,100));
 //        panel.add(bt2);
       //  window.add(panel);
         Pens Pen = new Pens();
 
-        bt1.addActionListener(new ActionListener() {
+        btCreate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Pen.create(100,"black",false);
                 System.out.println(Pen);
-                JTextField Inform = new JTextField(" Starts inform");
-                Inform
+
+
 
 
             }
         });
-        bt2.addActionListener((new ActionListener() {
+        btWrite.addActionListener((new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Pen.write(50);
+                System.out.println(Pen);
             }
         }));
 
