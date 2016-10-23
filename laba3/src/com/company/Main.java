@@ -19,7 +19,6 @@ class Pens {
 
     }
 
-
     public String toString() {
         return " Pen : " +
                 "percPasta = " + Pasta + "," + " Color = " + color + "," + "Brend = " +Brend +"," + " broke = " + broke ;
@@ -30,26 +29,41 @@ class Pens {
     void write(int p) {
         minuts = p;
         int k = 0;
-        if (broke == false) {
+        if (broke == false)
+        {
             for (int i = 1; i <= minuts; i++) {
-                if (Pasta <= 0) {
+                if (Pasta == 0)
+                {
                     System.out.println("NOPasta");
                     k++;
                     break;
-                } else {
-                    Pasta = Pasta - kkd;
+
+                } else if( Pasta < 0)
+                {
+                    Pasta = 0;
+
                 }
+                else
+                    {
+                    Pasta = Pasta - kkd ;
+                    }
 
             }
-            if (k == 1) {
-                broke = true;
-            }
-        } else {
-            System.out.println("PEN BROKEN");
+            if ( k == 1)
+                {
+
+                    System.out.println("Change color");
+                }
+
         }
+        else
+            {
+                System.out.println("Pen broken ,please , change Brend");
+            }
     }
 
     void ChangeCol() {
+
         if (color == "black") {
             color = "green";
             Pasta = 100;
@@ -60,6 +74,8 @@ class Pens {
     }
 
     void ChangeBre() {
+        broke = false ;
+        Pasta = 100;
         if (Brend == "Lecce_Pen") {
             Brend = "Parker_Pen";
             kkd = 1;
@@ -68,19 +84,34 @@ class Pens {
             kkd = 2;
         }
     }
+
+    void eat()
+    {
+
+            Pasta = Pasta - 25;
+            if(Pasta < 0)
+            {
+                Pasta = 0;
+                broke = true;
+               System.out.println("PEN BROKEN");
+            }
+
+
+    }
 }
 public class Main {
 
     public static void main(String[] args) {
         JFrame window = new JFrame("laba 2 ") ;
-        window.setSize(100,230);
+        window.setSize(100,300);
         window.setLocationRelativeTo(null);
         window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(3,1));
+        panel.setLayout(new GridLayout(4,4));
 
         JButton btWrite = new JButton("write");
+        JButton btEat = new JButton("eat");
         JButton btColor = new JButton("color");
         btColor.setBackground(Color.BLACK);
         btColor.setForeground(Color.green);
@@ -88,9 +119,11 @@ public class Main {
 
 
 
+
         panel.add(btWrite);
         panel.add(btColor);
         panel.add(btBrend);
+        panel.add(btEat);
         window.add(panel);
 
         Pens Pen = new Pens();
@@ -102,28 +135,44 @@ public class Main {
         btWrite.addActionListener((new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Pen.write(5);
-                System.out.println(Pen);
+                if((Pen.broke == false) &&  ( Pen.Pasta > 0)){
+                    Pen.write(5);
+                    System.out.println(Pen);
+                } else if( Pen.broke == true)
+                {
+                    System.out.println("Pen broken ,please , change Brend");
+                }
+                else{
+                    System.out.println("Please , change Color");
+                }
             }
         }));
 
         btColor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Pen.ChangeCol();
-                if (Pen.color =="green")
-                {
-                    btColor.setBackground(Color.green);
-                    btColor.setForeground(Color.black);
+                if(Pen.broke == false) {
+                    Pen.ChangeCol();
+                    if (Pen.color =="green")
+                    {
+                        btColor.setBackground(Color.green);
+                        btColor.setForeground(Color.black);
+
+                    }
+                    else
+                    {
+                        btColor.setBackground(Color.BLACK);
+                        btColor.setForeground(Color.green);
+                    }
+                    System.out.println(Pen);
 
                 }
                 else
                 {
-                    btColor.setBackground(Color.BLACK);
-                    btColor.setForeground(Color.green);
+                    System.out.println("Pen broken ,please , change Brend");
                 }
 
-                System.out.println(Pen);
+
 
             }
         });
@@ -131,12 +180,26 @@ public class Main {
         btBrend.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Pen.ChangeBre();
-                System.out.println(Pen);
+                    Pen.ChangeBre();
+                    System.out.println(Pen);
+
             }
         });
 
+        btEat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(Pen.broke == false) {
+                Pen.eat();
+                    System.out.println(Pen);
+                }
+                else
+                {
+                    System.out.println("Pen broken ,please , change Brend");
+                }
 
+            }
+        });
 
 
     }
