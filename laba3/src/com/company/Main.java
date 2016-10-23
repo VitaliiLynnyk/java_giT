@@ -78,7 +78,7 @@ public class Main {
         window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel panel = new JPanel();
-
+        panel.setLayout(new GridLayout(3,1));
 
         JButton btWrite = new JButton("write");
         JButton btColor = new JButton("color");
@@ -87,9 +87,6 @@ public class Main {
         JButton btBrend = new JButton("Brend");
 
 
-        btWrite.setPreferredSize(new Dimension(100,50));
-        btColor.setPreferredSize(new Dimension(100,50));
-        btBrend.setPreferredSize(new Dimension(100,50));
 
         panel.add(btWrite);
         panel.add(btColor);
