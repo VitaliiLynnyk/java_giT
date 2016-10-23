@@ -33,7 +33,7 @@ class Pens
 
     void write( int p)
     {
-      minuts = p ;
+        minuts = p ;
         int k=0 ;
         if( broke == false)
         {
@@ -65,24 +65,24 @@ class Pens
             Pasta = 100;
         }else if(color =="green")
         {
-           color = "black";
+            color = "black";
             Pasta = 100;
         }
     }
 
-     void ChangeBre()
-     {
-         if(Brend == "Lecce_Pen")
-         {
-             Brend = "Parker_Pen";
-             kkd = 1;
-         }
-         else if(Brend =="Parker_Pen")
-         {
-             Brend = "Lecce_Pen";
-             kkd = 2;
-         }
-     }
+    void ChangeBre()
+    {
+        if(Brend == "Lecce_Pen")
+        {
+            Brend = "Parker_Pen";
+            kkd = 1;
+        }
+        else if(Brend =="Parker_Pen")
+        {
+            Brend = "Lecce_Pen";
+            kkd = 2;
+        }
+    }
 }
 public class Main {
 
@@ -97,6 +97,8 @@ public class Main {
         JButton btCreate = new JButton("create");
         JButton btWrite = new JButton("write");
         JButton btColor = new JButton("color");
+        btColor.setBackground(Color.BLACK);
+        btColor.setForeground(Color.green);
         JButton btBrend = new JButton("Brend");
 
         btCreate.setPreferredSize(new Dimension(100,50));
@@ -134,7 +136,20 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Pen.ChangeCol();
+                if (Pen.color =="green")
+                {
+                    btColor.setBackground(Color.green);
+                    btColor.setForeground(Color.black);
+
+                }
+                else
+                {
+                    btColor.setBackground(Color.BLACK);
+                    btColor.setForeground(Color.green);
+                }
+
                 System.out.println(Pen);
+
             }
         });
 
