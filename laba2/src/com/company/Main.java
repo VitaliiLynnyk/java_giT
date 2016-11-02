@@ -87,7 +87,7 @@ class Pens
 
     void Eat ()
     {
-        Pasta = Pasta - 25;
+        Pasta = Pasta - 125;
         if(Pasta < 0)
         {
             Pasta = 0;
