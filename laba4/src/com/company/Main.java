@@ -10,6 +10,15 @@ class Pens {
     private String numberOfPen;
     private int price;
 
+        public Pens()
+        {
+            Color = "Blue" ;
+            Brend = "Lecce_Pen";
+            Type_Pen = "feather";
+            numberOfPen = "0";
+            price = 0;
+
+        }
     public String toString() {
         return " Pen : " + "\n" +
                 "Number of Pen = " + numberOfPen + "\n" + " Type = " + Type_Pen + "\n" + "Brend = " + Brend + "\n" + " Color = " + Color + "\n" + "Price = " + price;
@@ -228,7 +237,7 @@ public class Main {
         btBuy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (( pen.getBrend() == null) || (pen.getColor() == null) || (pen.getNumberOfPen() == "0")  || (pen.getType_Pen() == null)   || ( pen.getPrice() == 0 ))
+                if  ((pen.getNumberOfPen() == "0") || ( pen.getPrice() == 0 ))
                 {
                     Information.setText("pen is not Check");
                 }else{
