@@ -44,22 +44,22 @@ class Pens {
 
                 }
                 else
-                    {
+                {
                     Pasta = Pasta - kkd ;
-                    }
+                }
 
             }
             if ( k == 1)
-                {
+            {
 
-                    System.out.println("Change color");
-                }
+                System.out.println("Change color");
+            }
 
         }
         else
-            {
-                System.out.println("Pen broken ,please , change Brend");
-            }
+        {
+            System.out.println("Pen broken ,please , change Brend");
+        }
     }
 
     void ChangeCol() {
@@ -88,13 +88,13 @@ class Pens {
     void eat()
     {
 
-            Pasta = Pasta - 25;
-            if(Pasta < 0)
-            {
-                Pasta = 0;
-                broke = true;
-               System.out.println("PEN BROKEN");
-            }
+        Pasta = Pasta - 25;
+        if(Pasta < 0)
+        {
+            Pasta = 0;
+            broke = true;
+            System.out.println("PEN BROKEN");
+        }
 
 
     }
@@ -180,8 +180,8 @@ public class Main {
         btBrend.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    Pen.ChangeBre();
-                    System.out.println(Pen);
+                Pen.ChangeBre();
+                System.out.println(Pen);
 
             }
         });
@@ -190,7 +190,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(Pen.broke == false) {
-                Pen.eat();
+                    Pen.eat();
                     System.out.println(Pen);
                 }
                 else

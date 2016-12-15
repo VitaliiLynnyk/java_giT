@@ -5,7 +5,6 @@ import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 import  java.lang.String;
-import  java.util.Random;
 class Pens extends JPanel {
 
     Color color;
@@ -213,11 +212,6 @@ class Pens extends JPanel {
         btBuy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //      pen.setBrend(BoxBreVar.getSelectedItem().toString());
-                //      pen.setTypeOfPen(BoxTypeVar.getSelectedItem().toString());
-                //      pen.setNumbOfPen(Integer.valueOf(numbPen.getText().toString()));
-                //       Information.setText(null);
-                //       Information.append(pen + "");
 
                 pen.setAll(Integer.valueOf(numbPen.getText().toString()),BoxBreVar.getSelectedItem().toString(),BoxTypeVar.getSelectedItem().toString());
             }
